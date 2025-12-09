@@ -43,9 +43,17 @@
       <nav>
       <%= link_to "Home", root_path %>
       <%= link_to "About Us", about_path %>
-      
+      <%= link_to "Sign UP", signup_path %>
+      <%= link_to "Login" ,login_path%>
       <%= link_to "Friends", friends_path %>
+      <%= button_to "Logout", logout_path, method: :delete %>
+
     </nav>
+
+    <% flash.each do |key, message| %>
+    <div class="flash <%= key %>"><%= message %></div>
+  <% end %>
+  
     <%= yield %>
   </body>
 </html>

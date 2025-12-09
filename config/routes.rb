@@ -1,8 +1,29 @@
 Rails.application.routes.draw do
-  resources :friends
+  get "users/new"
+  get "users/create"
   root "articles#index"
-  get "articles/index"
+  
+   get  "/signup", to: "users#new"     # show signup form
+  post "/signup", to: "users#create"  # submit signup form
+
+  # # Login/logout routes
+  # get    "/login",  to: "sessions#new"
+  # post   "/login",  to: "sessions#create"
+  # delete "/logout", to: "sessions#destroy"
+  
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
   get "articles/about", to: "articles#about", as: :about
+  resources :friends
+  resources :articles do
+    resources :comments
+  end
+  
+  # get "articles/index"
+  # get "articles", to: "articles#index"
+  
+  # get "articles/:id", to: "articles#show"
 
   # get "articles/about", to: "articles#about" as: :about
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
