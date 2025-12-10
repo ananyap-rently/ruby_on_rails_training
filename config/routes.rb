@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get "users/new"
-  get "users/create"
+    resources :tasks
   root "articles#index"
   
    get  "/signup", to: "users#new"     # show signup form
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "articles/about", to: "articles#about", as: :about
+  resources :tasks
   resources :friends
   resources :articles do
     resources :comments

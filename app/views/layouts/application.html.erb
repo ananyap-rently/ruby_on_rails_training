@@ -20,6 +20,9 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tasks", "data-turbo-track": "reload" %>
+    <!-- Add Chart.js UMD build -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <%= javascript_importmap_tags %>
     <style>
       
@@ -46,6 +49,7 @@
       <%= link_to "Sign UP", signup_path %>
       <%= link_to "Login" ,login_path%>
       <%= link_to "Friends", friends_path %>
+      <%= link_to "Tasks" , tasks_path %>
       <%= button_to "Logout", logout_path, method: :delete %>
 
     </nav>

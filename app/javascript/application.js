@@ -1,3 +1,8 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+// app/javascript/application.js
+
 import "@hotwired/turbo-rails"
 import "controllers"
+
+import { initializeCounter } from "task_counter"
+
+document.addEventListener("turbo:load", initializeCounter);

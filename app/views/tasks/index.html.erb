@@ -1,0 +1,40 @@
+<h1>Your Tasks Dashboard</h1>
+
+<div class="task-dashboard-container" style="display: flex; gap: 40px; align-items: flex-start; margin-bottom: 30px;">
+  <!-- Task Summary -->
+  <div class="task-stats" style="flex-grow: 1;">
+    <% total_tasks = @tasks.count %>
+    <% completed_tasks = @tasks.where(completed: true).count %>
+    <% incomplete_tasks = total_tasks - completed_tasks %>
+
+    <h2>Task Summary</h2>
+    <p><strong>Total Tasks:</strong> <%= total_tasks %></p>
+    <p><strong>Completed:</strong> <%= completed_tasks %></p>
+    <p><strong>Pending:</strong> <%= incomplete_tasks %></p>
+
+    <!-- Hidden elements for JS -->
+    <div id="total-tasks-initial-data" style="display: none;"><%= total_tasks %></div>
+    <div id="completed-tasks-initial-data" style="display: none;"><%= completed_tasks %></div>
+    <div id="incomplete-tasks-initial-data" style="display: none;"><%= incomplete_tasks %></div>
+  </div>
+
+  <!-- Donut Chart -->
+  <div class="task-chart-display" style="width: 250px; height: 250px;">
+    <canvas id="task-chart"></canvas>
+  </div>
+</div>
+
+<hr>
+
+<%= link_to "Add New Task", new_task_path, class: "btn-add-task" %>
+
+<ul class="tasks-list">
+  <% @tasks.each do |task| %>
+    <li>
+      <%= task.task_name %> - <%= task.completed ? "Done" : "Pending" %>
+      <%= link_to "Show", task_path(task) %> |
+      <%= link_to "Edit", edit_task_path(task) %> |
+      <%= link_to "Destroy", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>
