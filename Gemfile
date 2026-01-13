@@ -35,7 +35,7 @@ gem "bootsnap", require: false
 gem "kamal", require: false
 
 #bcrypt
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.21'
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
